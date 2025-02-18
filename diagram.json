@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "author": "Ylo Silva de Sa Bittencourt",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 25.4,
+      "left": -86.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 271.94,
+      "left": 153.83,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 192.76, "left": 124.8, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "joystick1", "top": -87, "left": 207, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": -96,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 61.6,
+      "left": -200.5,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GND.1", "btn1:1.r", "black", [ "h0" ] ],
+    [ "pico:GP5", "btn1:2.r", "green", [ "h-15.65", "v-22.45" ] ],
+    [ "pico:GP14", "oled1:SDA", "blue", [ "h-6.05", "v63.99", "h220.8" ] ],
+    [ "pico:GP15", "oled1:SCL", "green", [ "h3.55", "v35.19", "h201.6" ] ],
+    [ "oled1:VCC", "vcc1:VCC", "red", [ "v0" ] ],
+    [ "pico:GND.5", "oled1:GND", "black", [ "h0" ] ],
+    [ "pico:GND.5", "joystick1:GND", "black", [ "h0" ] ],
+    [ "pico:3V3", "joystick1:VCC", "violet", [ "h0" ] ],
+    [ "pico:GP27", "joystick1:VERT", "orange", [ "h0" ] ],
+    [ "pico:GP26", "joystick1:HORZ", "gold", [ "h0" ] ],
+    [ "pico:GP22", "joystick1:SEL", "gray", [ "h0" ] ],
+    [ "pico:GND.3", "r1:2", "black", [ "h0" ] ],
+    [ "rgb1:COM", "r1:1", "black", [ "v0" ] ],
+    [ "pico:GP13", "rgb1:R", "red", [ "h0" ] ],
+    [ "rgb1:B", "pico:GP12", "blue", [ "h-0.8", "v-25.8", "h-48", "v96" ] ],
+    [ "rgb1:G", "pico:GP11", "green", [ "v-6.3", "h28", "v-48", "h-96", "v105.6" ] ]
+  ],
+  "dependencies": {}
+}
