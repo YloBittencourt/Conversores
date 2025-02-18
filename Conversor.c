@@ -136,7 +136,7 @@ int main(){
         }
         
         eixo_x = (adc_x * (WIDTH - 8)) / 4095;
-        eixo_y = (adc_y * (HEIGHT - 8)) / 4095;
+        eixo_y = HEIGHT - 8 - (adc_y * (HEIGHT - 8)) / 4095;
     
         ssd1306_fill(&ssd, false);
 
